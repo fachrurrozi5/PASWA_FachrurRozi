@@ -8,7 +8,7 @@
                 <div class="row g-4">
                     <div class="col-12">
                         <div class="bg-white rounded h-100 p-4">
-                            <h6 class="mb-4 text-dark">Data Peserta Paswa 2022</h6>
+                            <h3 class="mb-4 text-dark">Data Peserta Paswa 2022</h3>
                             <p><a href="peserta_add.php" class="btn btn-primary">Tambah</a></p>
                             <div class="table-responsive">
                                 <table class="table " id="datatable">

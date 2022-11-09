@@ -89,7 +89,7 @@ if (!isset($_SESSION['valid'])) {
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="logout.php" class="dropdown-item">Log Out</a>
+                            <a href="login.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>

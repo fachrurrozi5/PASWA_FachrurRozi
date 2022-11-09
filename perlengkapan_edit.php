@@ -26,10 +26,13 @@
                                     <input type="text" class="form-control" name="perlengkapan" placeholder="Perlengkapan"required
                                     value="<?php echo $perlengkapan; ?>"
                                         aria-describedby="emailHelp">
-                                    <label  class="form-label">Kategori</label>
-                                    <input type="text" class="form-control" name="kategori" placeholder="Kategori"required
-                                    value="<?php echo $kategori; ?>"
-                                        aria-describedby="emailHelp">
+                                        <label  class="form-label">Kategori</label>
+                                        <select class="form-control form-control-user" Placeholder="Kategori" name="kategori" required>
+                                            <option value="0">--Pilih--</option>
+                                            <option value="1"<?php if($kategori == "Laki Laki"){ echo "selected=selected";} ?> >Laki Laki</option>
+                                            <option value="2"<?php if($kategori == "Perempuan"){ echo "selected=selected";} ?> >Perempuan</option>
+                                            <option value="3"<?php if($kategori == "Laki dan Perempuan"){ echo "selected=selected";} ?> >Laki dan Perempuan</option>
+                                </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Edit</button>
                                 <a href="perlengkapan.php" class="btn btn-primary">Cancel</a>

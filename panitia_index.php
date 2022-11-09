@@ -37,9 +37,8 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
                 <a href="index.php" class="navbar-brand mx-4 mb-3">
-                <h3 class="text-primary"><img class="rounded-circle" src="asset/img/paswa.png" alt="" style="width: 40px; height: 40px;"></i>PASWA 2022</h3>
+                    <h3 class="text-primary"><img class="rounded-circle" src="asset/img/paswa.png" alt="" style="width: 40px; height: 40px;"></i>PASWA 2022</h3>
                 </a>
-                <div class="navbar-nav w-100">
                 <div class="navbar-nav w-100">
                     <a href="index.php" class="nav-item nav-link <?php if ($uriSegments[2] == "dashboard.php"){echo "active";}?>"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="panitia_index.php" class="nav-item nav-link <?php if ($uriSegments[2] == "panitia.php"){echo "active";}?>"><i class="fa fa-keyboard me-2"></i>Data Panitia</a>
@@ -51,15 +50,12 @@
                     <a href="perlengkapan_index.php" class="nav-item nav-link <?php if ($uriSegments[2] == "perlengkapan.php"){echo "active";}?>"><i class="fa fa-th me-2"></i>Perlengkapan</a>
                     <a href="peserta_kelompok_index.php" class="nav-item nav-link <?php if ($uriSegments[2] == "nama_kelompok.php"){echo "active";}?>"><i class="fa fa-th me-2"></i>Data Peserta - Kelompok</a>
                 </div>
-                <div class="nav-item dropdown">
-                    </div>
-                </div>
             </nav>
         </div>
         <!-- Sidebar End -->
-        
-        <!-- Content Start -->
-        <div class="content">
+
+                <!-- Content Start -->
+                <div class="content">
                        <!-- Navbar Start -->
                        <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
                 <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
@@ -80,113 +76,48 @@
             </nav>
             <!-- Navbar End -->
 
-            <?php
- include_once("connection.php");
-$result_peserta = mysqli_query($mysqli, "select count(nim) as total_peserta from tab_peserta");
-$total_peserta = mysqli_fetch_assoc($result_peserta);
-if(empty($total_peserta)){ $t_peserta = "0"; }else{ $t_peserta = $total_peserta['total_peserta'];}
-
-$result_panitia = mysqli_query($mysqli, "select count(nim) as total_panitia from tab_panitia");
-$total_panitia = mysqli_fetch_assoc($result_panitia);
-if(empty($total_panitia)){ $t_panitia = "0"; }else{ $t_panitia = $total_panitia['total_panitia'];}
-
-?>
-
-           <!-- Total Peserta $ Panitia -->
-           <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-line fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Panitia</p>
-                                <h6 class="mb-0"><?php echo $t_panitia ?></h6>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Peserta </p>
-                                <h6 class="mb-0"><?php echo $t_peserta ?></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Sale & Revenue End -->
-
-            <!-- Tata Tertib $ Perlengkapan -->
+            <!-- Table Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                    <div class="col-sm-12 col-md-6 col-xl-12">
-                        <div class="h-100 bg-secondary rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h3 class="mb-0">Tata Tertib PASWA 2022</h3>
-                                <a href="tata_tertib.php" class = "btn btn-danger">Show All</a>
-                            </div>
-                                <h8>
-                                <?php
-
-include_once("connection.php");
-$no = 0; 
-echo "<tr>";
-$result = mysqli_query($mysqli, "SELECT * FROM tab_tata_tertib limit 5");
-while ($row = mysqli_fetch_array($result)) {
-    $no++;
-   
-    echo "<td>" . $no. ". "  ;
-    echo $row['tata_tertib'] . "</br></td>";
-   
-}
-echo "</tr>";
-?>
-                                </h8>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-xl-12">
-                        <div class="h-100 bg-secondary rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h3 class="mb-0">Perlengkapan Paswa 2022</h3>
-                                <a href="perlengkapan.php" class = "btn btn-danger">Show All</a>
-                            </div>
-                                <h8>
-                                <div class="table-responsive">
+                    <div class="col-12">
+                        <div class="bg-white rounded h-100 p-4">
+                            <h3 class="mb-4 text-dark">Data Panitia Paswa 2022</h3>
+                            <div class="table-responsive">
                                 <table class="table " id="datatable">
                                 <thead>
                         <tr>
                             
-                            <td  class="text-light"> No.</td>
-                            <td class="text-light"> Perlengkapan</td>
-                            <td class="text-light"> Kategori</td>
+                            <td  class="text-dark"> No.</td>
+                            <td class="text-dark"> Nama Panitia</td>
+                            <td class="text-dark"> Jabatan</td>
+                            <td class="text-dark"> No HP</td>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         include_once("connection.php");
                         $no = 0;
-                        $result = mysqli_query($mysqli, "SELECT * FROM tab_perlengkapan");
+                        $result = mysqli_query($mysqli, "SELECT * FROM tab_panitia");
                         while ($row = mysqli_fetch_array($result)) {
                             $no++;
                             echo "<tr>";
-                            echo "<td class='text-light'>" . $no . "</td>";
-                            echo "<td class='text-light'>" . $row['perlengkapan'] . "</td>";
-                            echo "<td class='text-light'>" . $row['kategori'] . "</td>";
+                            echo "<td class='text-dark'>" . $no . "</td>";
+                            echo "<td class='text-dark'>" . $row['nama'] . "</td>";
+                            echo "<td class='text-dark'>" . $row['jabatan'] . "</td>";
+                            echo "<td class='text-dark'>" . $row['no_hp'] . "</td>";
                         }
                         ?>
                     </tbody>
                                 </table>
-                                </h8>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Widgets End -->
-
-
-            <!-- Footer Start -->
-            <div class="container-fluid pt-4 px-4">
+            <!-- Table End -->
+        
+<!-- Footer Start -->
+<div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">

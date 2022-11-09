@@ -58,7 +58,7 @@ while ($row = mysqli_fetch_array($result)) {
     $no++;
    
     echo "<td>" . $no. ". "  ;
-    echo $row['tata_tertib'] . "</br></td>";
+    echo $row['tata_tertib'] . "<br></td>";
    
 }
 echo "</tr>";
@@ -73,22 +73,37 @@ echo "</tr>";
                                 <a href="perlengkapan.php" class = "btn btn-danger">Show All</a>
                             </div>
                                 <h8>
-<?php
-
-include_once("connection.php");
-$no = 0; 
-echo "<tr>";
-$result = mysqli_query($mysqli, "SELECT * FROM tab_perlengkapan limit 5");
-while ($row = mysqli_fetch_array($result)) {
-    $no++;
-   
-    echo $no . "</td>";
-    echo $row['perlengkapan'] . "</td>";
-    echo $row['kategori'] . "</td>";
-   
-}
-echo "</tr>";
-?>
+                            <div class="table-responsive">
+                                <table class="table " id="datatable">
+                                <thead>
+                        <tr>
+                            
+                            <td  class="text-light"> No.</td>
+                            <td class="text-light"> Perlengkapan</td>
+                            <td class="text-light"> Kategori</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include_once("connection.php");
+                        $no = 0;
+                        $result = mysqli_query($mysqli, "SELECT * FROM tab_perlengkapan");
+                        while ($row = mysqli_fetch_array($result)) {
+                            $no++;
+                            echo "<tr>";
+                            echo "<td class='text-light'>" . $no . "</td>";
+                            echo "<td class='text-light'>" . $row['perlengkapan'] . "</td>";
+                            echo "<td class='text-light'>" . $row['kategori'] . "</td>";
+                        }
+                        ?>
+                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Table End -->
                                 </h8>
                         </div>
                     </div>
